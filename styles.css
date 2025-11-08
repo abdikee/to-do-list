@@ -1,0 +1,128 @@
+:root{
+	--bg: #f7f8fc;
+	--card: #ffffff;
+	--muted: #6b7280;
+	--accent: #2563eb;
+	--danger: #ef4444;
+	--success: #10b981;
+	--max-width: 720px;
+	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Dark theme overrides - toggled by adding .theme-dark to <html> */
+.theme-dark{
+	--bg: #0b1220;
+	--card: #0f1724;
+	--muted: #9ca3af;
+	--accent: #60a5fa;
+	--danger: #fca5a5;
+	--success: #34d399;
+	color-scheme: dark;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+	margin:0;
+	background:var(--bg);
+	color:#111827;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+.container{max-width:var(--max-width);margin:0 auto;padding:1rem}
+.hint{margin:0.5rem 0 0;color:var(--muted);font-size:0.95rem}
+
+/* Slightly larger, more readable base font on small screens */
+@media (max-width:520px){
+	html { font-size: 16px; }
+}
+
+/* Week grid to mimic the attached layout (6 cards)
+	 Desktop: 3 columns x 2 rows. Mobile: single column stack. */
+.week-grid{
+	display:grid;
+	grid-template-columns:repeat(3,1fr);
+	gap:1rem;
+	margin-top:1rem;
+}
+.day-card{
+	background:var(--card);
+	border-radius:12px;
+	padding:0.8rem;
+	box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+	border:1px solid rgba(15,23,42,0.04);
+	min-height:180px;
+	display:flex;
+	flex-direction:column;
+}
+.day-card h3{margin:0 0 0.5rem;font-size:1.05rem}
+.tasks-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.45rem;flex:1}
+.tasks-list li{display:flex;align-items:center;gap:0.5rem;padding:0.35rem 0;border-bottom:1px dashed rgba(0,0,0,0.04)}
+.tasks-list li:last-child{border-bottom:0}
+.tasks-list .task-label{flex:1}
+.tasks-list .task-placeholder{color:var(--muted);text-align:center;padding:0.75rem 0}
+
+select#task-day{padding:0.5rem;border-radius:8px;border:1px solid #e6e9ef;background:var(--card);font-size:0.95rem}
+
+@media (max-width:820px){
+	.week-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:520px){
+	.week-grid{grid-template-columns:1fr}
+}
+
+.site-header{background:linear-gradient(90deg, #fff 0%, #f3f4f6 100%);border-bottom:1px solid rgba(0,0,0,0.04)}
+.site-header .container{display:flex;flex-direction:column;gap:0.25rem;padding:1.25rem 1rem}
+.site-header h1{margin:0;font-size:1.25rem}
+.subtitle{margin:0;color:var(--muted);font-size:0.95rem}
+
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.header-controls{display:flex;align-items:center;gap:0.5rem}
+
+.btn-icon{background:transparent;border:0;padding:0.25rem 0.5rem;border-radius:6px;cursor:pointer}
+.btn-icon:hover{background:rgba(0,0,0,0.04)}
+
+/* make the theme toggle visually distinct */
+#theme-toggle{font-size:1.05rem}
+
+main{padding:1rem 0}
+
+.task-creator form{
+	display:flex;gap:0.5rem;align-items:center;
+}
+#task-input{flex:1;padding:0.7rem;border-radius:8px;border:1px solid #e6e9ef;background:var(--card);font-size:1rem}
+#task-input:focus{outline:3px solid rgba(37,99,235,0.12);border-color:var(--accent)}
+#add-btn{padding:0.6rem 0.9rem;border-radius:8px;border:0;background:var(--accent);color:white;font-weight:600;cursor:pointer}
+#add-btn:hover{opacity:0.95}
+
+.tasks{list-style:none;padding:0;margin:1rem 0;display:flex;flex-direction:column;gap:0.5rem}
+.tasks li{display:flex;align-items:center;gap:0.75rem;padding:0.6rem;border-radius:10px;background:var(--card);border:1px solid rgba(15,23,42,0.04)}
+.task-left{display:flex;align-items:center;gap:0.75rem;flex:1}
+.task-left input[type="checkbox"]{width:18px;height:18px}
+.task-label{font-size:0.98rem}
+.task-actions{display:flex;gap:0.5rem}
+.btn-icon{background:transparent;border:0;padding:0.25rem 0.5rem;border-radius:6px;cursor:pointer}
+.btn-delete{color:var(--danger)}
+.btn-edit{color:var(--muted)}
+
+.completed .task-label{text-decoration:line-through;color:var(--muted)}
+
+.site-footer{border-top:1px solid rgba(0,0,0,0.04);padding:1rem 0;margin-top:2rem}
+.site-footer .quote{color:var(--muted);font-size:0.95rem;margin:0.5rem 0 0}
+
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+/* Responsive */
+@media (max-width:520px){
+	.site-header .container{padding:0.9rem}
+	#task-input{font-size:0.95rem}
+	#add-btn{padding:0.5rem 0.7rem}
+}
+
+/* Small accessibility focus states */
+button:focus, input:focus{box-shadow:0 0 0 3px rgba(37,99,235,0.12)}
+
+/* smooth color transitions when switching theme */
+body, .site-header, .site-footer, .tasks li, #task-input, #add-btn{transition:background-color 180ms ease, color 180ms ease, border-color 180ms ease}
+
