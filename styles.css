@@ -1,5 +1,6 @@
 :root{
-	--bg: #f7f8fc;
+	/* page background color (used as fallback and by later body rule) */
+	--bg: #f0f0f0;
 	--card: #ffffff;
 	--muted: #6b7280;
 	--accent: #2563eb;
@@ -8,6 +9,31 @@
 	--max-width: 720px;
 	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
+
+/* Page background: place the attached image in `docs/lanterns.jpg` (relative to project root)
+   or update the URL below to point to your file. This image will sit behind the site content. */
+body{
+	background-image: url('https://img.pikbest.com/origin/06/32/28/02ppIkbEsTVRQ.jpg!f305cw');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	/* fallback color while image loads */
+	background-color: var(--bg);
+}
+
+/* Add a subtle translucent layer for improved text contrast on busy backgrounds */
+body::before{
+	content: '';
+	position: fixed;
+	inset: 0;
+	background: linear-gradient(rgba(4,9,23,0.35), rgba(4,9,23,0.25));
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* Ensure page content sits above the overlay */
+.container, .site-header, .site-footer, .day-card, .tasks li{position:relative;z-index:1}
 
 /* Dark theme overrides - toggled by adding .theme-dark to <html> */
 .theme-dark{

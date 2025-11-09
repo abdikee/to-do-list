@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Weekly To‑Do</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="container">
+			<div class="header-row">
+				<h1>Weekly To‑Do</h1>
+				<div class="header-controls">
+					<button id="theme-toggle" class="btn-icon" aria-pressed="false" aria-label="Toggle theme">🌙</button>
+				</div>
+			</div>
+			<p class="subtitle">Plan tasks for the week</p>
+
+			<div class="task-creator">
+				<form id="task-form" aria-label="Add task">
+					<div style="display:flex;gap:0.5rem;align-items:center">
+						<input id="task-input" name="task" type="text" placeholder="What do you want to do?" aria-label="Task description">
+						<select id="task-day" aria-label="Select day">
+							<option>Monday</option>
+							<option>Tuesday</option>
+							<option>Wednesday</option>
+							<option>Thursday</option>
+							<option>Friday</option>
+							<option>Weekend</option>
+						</select>
+						<button id="add-btn" type="submit">Add</button>
+					</div>
+				</form>
+				<p class="hint">Press Enter to add a task. Press <kbd>n</kbd> to focus the input.</p>
+			</div>
+		</div>
+	</header>
+
+	<main class="container">
+		<section class="week-grid" aria-label="Week tasks">
+			<div class="day-card">
+				<h3>Monday</h3>
+				<ul id="tasks-Monday" class="tasks-list"></ul>
+			</div>
+			<div class="day-card">
+				<h3>Tuesday</h3>
+				<ul id="tasks-Tuesday" class="tasks-list"></ul>
+			</div>
+			<div class="day-card">
+				<h3>Wednesday</h3>
+				<ul id="tasks-Wednesday" class="tasks-list"></ul>
+			</div>
+			<div class="day-card">
+				<h3>Thursday</h3>
+				<ul id="tasks-Thursday" class="tasks-list"></ul>
+			</div>
+			<div class="day-card">
+				<h3>Friday</h3>
+				<ul id="tasks-Friday" class="tasks-list"></ul>
+			</div>
+			<div class="day-card">
+				<h3>Weekend</h3>
+				<ul id="tasks-Weekend" class="tasks-list"></ul>
+			</div>
+		</section>
+
+		<footer class="site-footer">
+			<p class="quote">Made with care — local-only storage.</p>
+		</footer>
+	</main>
+
+	<script src="script.js" defer></script>
+</body>
+</html>
+
